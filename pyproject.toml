@@ -20,6 +20,6 @@ keywords = [
   "convenience",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 test = ["coverage", "pytest"]
 extra = ["loguru", "pydantic"]

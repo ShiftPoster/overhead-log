@@ -1,6 +1,10 @@
 name: Publish to PyPI
 
 on:
+  workflow_run:
+    workflows: ["Run tests via tox"]
+    types:
+      - completed
   release:
     types: [published]
   push:
@@ -38,7 +42,7 @@ jobs:
       url: https://pypi.org/project/overhead-log/${{ github.event.release.name }}
 
     steps:
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@v7
         with:
           name: dist
           path: dist/

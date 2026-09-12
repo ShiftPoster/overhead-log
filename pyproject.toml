@@ -1,10 +1,10 @@
 [build-system]
-requires = ["uv_build==0.12.9"]
-build-backend = "uv_build"
+requires = ["setuptools>=80", "setuptools-scm[simple]>=9.2"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "overhead-log"
-version = "0.0.0"
+dynamic = ["version"]
 requires-python = ">=3.11"
 classifiers = [
     "Development Status :: 1 - Planning",
@@ -20,6 +20,8 @@ keywords = [
   "convenience",
 ]
 
+[project.optional-dependencies]
+extra = ["loguru", "pydantic"]
+
 [dependency-groups]
 test = ["coverage", "pytest"]
-extra = ["loguru", "pydantic"]

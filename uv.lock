@@ -158,26 +158,28 @@ wheels = [
 
 [[package]]
 name = "overhead-log"
-version = "0.0.0"
 source = { editable = "." }
 
-[package.dev-dependencies]
+[package.optional-dependencies]
 extra = [
     { name = "loguru" },
     { name = "pydantic" },
 ]
+
+[package.dev-dependencies]
 test = [
     { name = "coverage" },
     { name = "pytest" },
 ]
 
 [package.metadata]
+requires-dist = [
+    { name = "loguru", marker = "extra == 'extra'" },
+    { name = "pydantic", marker = "extra == 'extra'" },
+]
+provides-extras = ["extra"]
 
 [package.metadata.requires-dev]
-extra = [
-    { name = "loguru" },
-    { name = "pydantic" },
-]
 test = [
     { name = "coverage" },
     { name = "pytest" },

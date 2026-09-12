@@ -3,7 +3,7 @@ from itertools import chain
 
 import pytest
 
-from overhead_loglevel import Level
+from overhead_log import Level
 
 try:
     import loguru  # type: ignore # noqa: F401
@@ -38,7 +38,9 @@ def test_pydantic():
 
 @pytest.mark.parametrize(
     "level",
-    tuple(chain(Level, Level.__members__.keys(), map(str.lower, Level.__members__.keys()))),
+    tuple(
+        chain(Level, Level.__members__.keys(), map(str.lower, Level.__members__.keys()))
+    ),
 )
 def test_argparse(level: str | int | Level):
     parser = ArgumentParser()

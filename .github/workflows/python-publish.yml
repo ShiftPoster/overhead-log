@@ -15,9 +15,8 @@ jobs:
       - uses: astral-sh/setup-uv@v10.1.0
 
       - name: Build release distributions
-        env:
-          SOURCE_DATE_EPOCH: $(git log -1 --pretty=%ct)
         run: |
+          echo "SOURCE_DATE_EPOCH= $(git log -1 --pretty=%ct))" >> $GITHUB_ENV
           echo "SOURCE_DATE_EPOCH: $SOURCE_DATE_EPOCH"
           uv build --wheel --no-sources
 
